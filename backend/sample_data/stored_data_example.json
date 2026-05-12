@@ -1,0 +1,26 @@
+{
+  "_comment": "Example of how data is stored locally after uploading sample.txt. One file lives in backend/vector_db/: 'corpus.json' (the array below). Retrieval uses BM25 (a classic keyword-ranking algorithm) — no embeddings, no API calls. Each chunk stores its raw text plus a tokenized form used to build the BM25 index.",
+  "retrieval_method": "BM25 (rank-bm25)",
+  "files_on_disk": [
+    "backend/vector_db/corpus.json"
+  ],
+  "corpus_format_example": [
+    {
+      "source": "sample.txt",
+      "chunk_index": 0,
+      "text": "The Solar System Overview The Solar System is the gravitationally bound system of the Sun and the objects that orbit it. It formed approximately 4.6 billion years ago from the gravitational collapse of a giant interstellar molecular cloud. The Sun The Sun is a G-type main-sequence star at the center of the Solar System. It contains 99.86% of the system's known mass.",
+      "tokens": ["the", "solar", "system", "overview", "the", "solar", "system", "is", "the", "gravitationally", "bound", "system", "of", "the", "sun", "and", "the", "objects", "that", "orbit", "it"]
+    },
+    {
+      "source": "sample.txt",
+      "chunk_index": 2,
+      "text": "The Outer Planets The four outer planets are Jupiter, Saturn, Uranus, and Neptune. Jupiter and Saturn are gas giants composed mainly of hydrogen and helium. Uranus and Neptune are ice giants and contain larger amounts of water, methane, and ammonia.",
+      "tokens": ["the", "outer", "planets", "the", "four", "outer", "planets", "are", "jupiter", "saturn", "uranus", "and", "neptune", "jupiter", "and", "saturn", "are", "gas", "giants", "composed", "mainly", "of", "hydrogen", "and", "helium"]
+    }
+  ],
+  "example_query": {
+    "question": "What are the gas giants?",
+    "top_match_index": 1,
+    "bm25_score": 4.218
+  }
+}
