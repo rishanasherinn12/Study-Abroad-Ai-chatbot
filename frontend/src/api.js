@@ -1,32 +1,14 @@
 const BASE = '/api';
 
-// export async function uploadFile(file) {
-//   const form = new FormData();
-//   form.append('file', file);
-//   const res = await fetch(`${BASE}/upload`, { method: 'POST', body: form });
-//   if (!res.ok) {
-//     const err = await res.json().catch(() => ({ detail: res.statusText }));
-//     throw new Error(err.detail || 'Upload failed');
-//   }
-//   return res.json();
-// }
-
 export async function uploadFile(file) {
   const form = new FormData();
   form.append('file', file);
-
-  const res = await fetch(`${BASE}/upload`, {
-    method: 'POST',
-    body: form,
-  });
-
-  const data = await res.json();
-
+  const res = await fetch(`${BASE}/upload`, { method: 'POST', body: form });
   if (!res.ok) {
-    throw new Error(data.detail || data.message || 'Upload failed');
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Upload failed');
   }
-
-  return data;
+  return res.json();
 }
 
 export async function chat(question, history) {
