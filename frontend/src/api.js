@@ -1,4 +1,5 @@
-const BASE = '/api';
+// const BASE = '/api';
+const BASE = 'https://study-abroad-ai-chatbot-production.up.railway.app';
 
 export async function uploadFile(file) {
   const form = new FormData();
